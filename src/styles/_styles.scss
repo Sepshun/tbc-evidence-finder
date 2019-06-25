@@ -1,0 +1,15 @@
+
+// ----------------------------------------------
+// INITIALIZE FONT ------------------------------
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
+* { font-family: "Roboto", sans-serif; }
+
+
+// ----------------------------------------------
+// FIX BODY MARGIN, APP HEIGHT, BACKGROUND ------
+body {
+    margin: 0;
+    background: linear-gradient($background-overlay, $background-overlay), url('https://cdn.discordapp.com/attachments/379193540732780554/593103964887842836/unknown.png');
+    background-size: cover;
+}
+#app { min-height: 100vh; }
