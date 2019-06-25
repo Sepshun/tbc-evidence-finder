@@ -1,5 +1,5 @@
 <template>
-<div id="about" class="view">
+<div id="checklist" class="view">
 	
 </div>
 </template>
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss">
-#about {
-	
+#checklist {
+    
 }
 </style>
