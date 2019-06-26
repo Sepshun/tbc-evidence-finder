@@ -13,3 +13,14 @@ body {
     background-size: cover;
 }
 #app { min-height: 100vh; }
+
+
+// ----------------------------------------------
+// FANCY SCROLLBARS -----------------------------
+*::-webkit-scrollbar {
+    width: 4px;
+    background: rgba(white, 0.2);
+}
+*::-webkit-scrollbar-thumb {
+    background: linear-gradient($blue, darken($blue, 20%));
+}
