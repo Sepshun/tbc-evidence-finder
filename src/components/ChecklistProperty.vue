@@ -1,12 +1,12 @@
 <template>
 <div class="property">
 	<div class="header">
-		<img :src="icon" alt="" class="icon">
-		<p class="title">{{ title }}</p>
-		<p v-if="num" class="num">{{ num }} Locations</p>
+		<img src="" alt="" class="icon">
+		<p class="title">{{ property.title }}</p>
+		<p class="num">{{ property.locations.length }} Locations</p>
 	</div>
 	<div class="location-list">
-		<ChecklistLocation v-for="i in num" />
+		<ChecklistLocation v-for="loc in property.locations" :data="loc" />
 	</div>
 </div>
 </template>
@@ -16,20 +16,7 @@ import ChecklistLocation from '@/components/ChecklistLocation.vue'
 
 export default {
 	components: { ChecklistLocation },
-    props: {
-		icon: {
-            type: String,
-            default: ''
-        },
-        title: {
-            type: String,
-            default: 'Property Name'
-        },
-        num: {
-            type: Number,
-            default: null
-        }
-	}
+    props: ['property']
 }
 </script>
 

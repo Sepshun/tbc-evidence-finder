@@ -2,7 +2,7 @@
 <div id="checklist" class="view">
 	<ChecklistNav />
     <div class="property-list">
-        <ChecklistProperty v-for="i in 24" :num="i" />
+        <ChecklistProperty v-for="property in this.$store.state.properties" :property="property" />
     </div>
 </div>
 </template>

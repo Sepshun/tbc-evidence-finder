@@ -7,7 +7,7 @@
 	</div>
 	
 	<div class="properties">
-		<ChecklistNavItem v-for="i in 24" icon="" title="918 Hoadly Ave" :num="i" />
+		<ChecklistNavItem v-for="property in this.$store.state.properties" icon="" :title="property.title" :num="property.locations.length" />
 	</div>
 	
 	<div class="settings">
