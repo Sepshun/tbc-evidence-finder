@@ -6,15 +6,14 @@
 	<div class="overlay"></div>
 	<p class="title">{{ data.title }}</p>
 	
-	<div class="info">
+	<!-- <div class="info">
 		<p class="title">{{ data.title }}</p>
 		<p
 			class="item"
 			v-for="(item, i) in data.items"
-			@mouseenter="imageState = i"
-			@mouseleave="imageState = 'cover'"
+			@click="imageState = i"
 		>{{ i+1 }}) {{ item.title }}</p>
-	</div>
+	</div> -->
 </div>
 </template>
 
@@ -26,22 +25,20 @@ export default {
 			default: () => {
 				return {
 					title: 'Location Name',
-					image: 'https://trello-attachments.s3.amazonaws.com/5d125aa5ec302a8a17e84692/5d129a50118d956c1cd8618a/bab72a8a1883cccece248693363e19fd/unknown.png',
+					image: '',
 					items: [
 						{
 							title: 'Item 1 Name',
-							image: 'https://trello-attachments.s3.amazonaws.com/5d125aa5ec302a8a17e84692/5d129a50118d956c1cd8618a/5ab421604bcf5ae072a16ee349600069/unknown.png'
+							image: ''
 						},
 						{
 							title: 'Item 2 Name',
-							image: 'https://images.pexels.com/photos/1804796/pexels-photo-1804796.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+							image: ''
 						}
 					],
 					meta: {
 						addedDate: 'July 5th, 2019',
-						addedBy: 'Sepshun',
-						confirmed: 'July 8th, 2019',
-						timesRecorded: 24
+						addedBy: 'Sepshun'
 					}
 				}
 			}
@@ -49,12 +46,12 @@ export default {
 	},
 	data() {
 		return {
-			imageState: 'cover'
+			imageState: '0'
 		}
 	},
 	computed: {
 		tileBackground() {
-			if (this.imageState === 'cover') {
+			if (this.imageState === '0') {
 				return {
 					backgroundImage: `url(${this.data.image})`
 				}
@@ -76,6 +73,9 @@ export default {
 	background-size: cover;
 	background-position: center;
 	position: relative;
+	
+	float: left;
+	margin: 8px;
 	
 	> .title {
 		color: white;

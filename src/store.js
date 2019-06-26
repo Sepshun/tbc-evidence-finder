@@ -23,18 +23,24 @@ export default new Vuex.Store({
                             }, {
                                 title: 'Boxes',
                                 image: 'https://steamuserimages-a.akamaihd.net/ugc/992387199682139144/ACF776ED3E49EB45915CD1EE5DAC10DA8B04D370/'
-                            }, {
-                                title: 'Downstairs',
-                                image: 'https://steamuserimages-a.akamaihd.net/ugc/992387199682149284/04988B93711D4D4D358ADF375DA4FFD42E9CDB16/'
-                            }, {
-                                title: 'Street Benches',
-                                image: 'https://steamuserimages-a.akamaihd.net/ugc/947349514287533529/116865ACC408EEB0B4389AF41E099235E9F1A650/'
                             }
                         ]
                     }, {
                         title: 'Backyard Table',
                         image: 'https://steamuserimages-a.akamaihd.net/ugc/992387199675473815/7539F31002DE8256BA08F1752F90758A6CC4F826/'
-                    }
+					}, {
+						title: 'Downstairs',
+						image: 'https://steamuserimages-a.akamaihd.net/ugc/992387199682149284/04988B93711D4D4D358ADF375DA4FFD42E9CDB16/'
+					}, {
+						title: 'Street Bench',
+						image: 'https://steamuserimages-a.akamaihd.net/ugc/947349514287533529/116865ACC408EEB0B4389AF41E099235E9F1A650/'
+					}, {
+						title: 'Street Bench',
+						image: 'https://steamuserimages-a.akamaihd.net/ugc/947349514287533529/116865ACC408EEB0B4389AF41E099235E9F1A650/'
+					}, {
+						title: 'Street Bench',
+						image: 'https://steamuserimages-a.akamaihd.net/ugc/947349514287533529/116865ACC408EEB0B4389AF41E099235E9F1A650/'
+					}
                 ]
             },
             { // 919 Hoadly Ave.

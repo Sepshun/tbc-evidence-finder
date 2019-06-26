@@ -7,7 +7,7 @@
 	</div>
 	
 	<div class="properties">
-		<ChecklistNavItem v-for="property in this.$store.state.properties" icon="" :title="property.title" :num="property.locations.length" />
+		<ChecklistNavItem v-for="property in this.$store.state.properties" icon="" :title="property.title" />
 	</div>
 	
 	<div class="settings">
@@ -33,11 +33,11 @@ export default {
 #checklist-nav {
 	display: grid;
 	grid-template-rows: 126px auto 42px;
-	grid-gap: 32px;
+	grid-gap: 16px;
 	height: calc(100vh - 64px);
-	width: 320px;
+	width: 100%;
 	box-sizing: border-box;
-	padding: 32px 0;
+	padding: 16px 0;
 	background: $background-dark;
 	
 	> .properties {

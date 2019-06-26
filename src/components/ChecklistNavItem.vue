@@ -1,7 +1,7 @@
 <template>
 <div class="item">
 	<img class="icon" src="" alt="">
-    <p class="title">{{ title }}</p>
+    <p class="title" :class="{'span-2': !num}">{{ title }}</p>
     <p v-if="num" class="num">{{ num }}</p>
 </div>
 </template>
@@ -30,7 +30,7 @@ export default {
 	display: grid;
     grid-template-columns: 42px auto 42px;
     height: 42px;
-    width: 316px;
+    width: 100%;
     box-sizing: border-box;
     padding: 0 16px;
     opacity: 0.5;
@@ -46,10 +46,12 @@ export default {
     > .title, > .num {
         margin: 0;
         color: white;
-        font-size: 18px;
+        font-size: 16px;
     }
     > .title { margin-left: 8px; }
     > .num { justify-self: end; }
+    
+    > .span-2 { grid-column-end: span 2; }
     
     &:hover, &.active { opacity: 1; }
     &.active { background: linear-gradient(90deg, rgba(white, 0.2), rgba(0,0,0,0)); }

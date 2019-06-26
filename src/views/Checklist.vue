@@ -19,11 +19,11 @@ export default {
 <style lang="scss">
 #checklist {
     display: grid;
-	grid-template-columns: 320px auto;
+	grid-template-columns: 240px auto;
     
     > .property-list {
         box-sizing: border-box;
-        padding: 32px;
+        padding: 16px;
         height: calc(100vh - 64px);
         overflow: auto;
     }

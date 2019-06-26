@@ -23,9 +23,9 @@ export default {
 <style lang="scss">
 .property {
 	background: $background-dark;
-	width: 100%;
+	width: calc(100% + 4px);
 	min-height: 320px;
-	&:not(:last-of-type) { margin-bottom: 32px; }
+	&:not(:last-of-type) { margin-bottom: 16px; }
 	
 	> .header {
 		background: $gradient;
@@ -34,7 +34,7 @@ export default {
 		grid-template-columns: 32px auto auto;
 		grid-gap: 8px;
 		box-sizing: border-box;
-		padding: 8px;
+		padding: 8px 16px;
 		align-items: center;
 		
 		> .icon {
@@ -55,11 +55,9 @@ export default {
 	}
 	
 	> .location-list {
-		display: grid;
-		grid-template-columns: repeat(5, 256px);
 		box-sizing: border-box;
-		padding: 16px;
-		grid-gap: 16px;
+		padding: 8px;
+		@include clearfix();
 	}
 }
 </style>
