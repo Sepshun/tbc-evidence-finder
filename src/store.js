@@ -7,8 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         properties: [
-            { // 918 Hoadly Ave.
-                title: '918 Hoadly Ave.',
+            { // 918 Hoadly Ave
+                title: '918 Hoadly Ave',
                 locations: [
                     {
                         title: 'Kitchen',
@@ -43,20 +43,20 @@ export default new Vuex.Store({
 					}
                 ]
             },
-            { // 919 Hoadly Ave.
-                title: '919 Hoadly Ave.',
+            { // 919 Hoadly Ave
+                title: '919 Hoadly Ave',
                 locations: []
             },
-            { // 920 Hoadly Ave.
-                title: '920 Hoadly Ave.',
+            { // 920 Hoadly Ave
+                title: '920 Hoadly Ave',
                 locations: []
             },
-            { // 921 Hoadly Ave.
-                title: '921 Hoadly Ave.',
+            { // 921 Hoadly Ave
+                title: '921 Hoadly Ave',
                 locations: []
             },
-            { // 922 Hoadly Ave.
-                title: '922 Hoadly Ave.',
+            { // 922 Hoadly Ave
+                title: '922 Hoadly Ave',
                 locations: []
             },
             { // 1001 Hoadly

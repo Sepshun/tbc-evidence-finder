@@ -1,5 +1,5 @@
 <template>
-<div class="property">
+<div :id="`prop-${property.title.replace(/\s+/g, '-').toLowerCase()}`" class="property">
 	<div class="header">
 		<img src="" alt="" class="icon">
 		<p class="title">{{ property.title }}</p>

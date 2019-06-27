@@ -1,9 +1,9 @@
 <template>
-<div class="item">
+<a :href="`#prop-${title.replace(/\s+/g, '-').toLowerCase()}`" class="item scrollactive-item">
 	<img class="icon" src="" alt="">
     <p class="title" :class="{'span-2': !num}">{{ title }}</p>
     <p v-if="num" class="num">{{ num }}</p>
-</div>
+</a>
 </template>
 
 <script>
@@ -36,6 +36,7 @@ export default {
     opacity: 0.5;
     align-items: center;
     cursor: pointer;
+    text-decoration: none;
     
     > .icon {
         background: white;

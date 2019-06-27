@@ -6,9 +6,21 @@
 		<ChecklistNavItem icon="" title="No Evidence" :num="2" />
 	</div>
 	
-	<div class="properties">
-		<ChecklistNavItem v-for="property in this.$store.state.properties" :key="`nav${property.title}`" icon="" :title="property.title" />
-	</div>
+	<scrollactive
+		class="properties"
+		active-class="active"
+		:offset="256"
+		:scrollOffset="16"
+		:scrollContainerSelector="'.property-list'"
+		:modifyUrl="false"
+	>
+		<ChecklistNavItem
+			v-for="(property, i) in this.$store.state.properties"
+			:key="`nav${property.title}`"
+			icon=""
+			:title="property.title"
+		/>
+	</scrollactive>
 	
 	<div class="settings">
 		<ChecklistNavItem icon="" title="Settings" />

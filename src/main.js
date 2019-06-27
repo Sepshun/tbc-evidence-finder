@@ -35,6 +35,12 @@ Vue.prototype.$storage = firebase.storage()
 
 
 // ----------------------------------------
+// VUE SCROLLACTIVE -----------------------
+import VueScrollactive from 'vue-scrollactive'
+Vue.use(VueScrollactive)
+
+
+// ----------------------------------------
 // VUE INSTANCE ---------------------------
 Vue.config.productionTip = false
 new Vue({
