@@ -6,7 +6,7 @@
 		<p class="num">{{ property.locations.length }} Locations</p>
 	</div>
 	<div class="location-list">
-		<ChecklistLocation v-for="loc in property.locations" :data="loc" />
+		<ChecklistLocation v-for="loc in property.locations" :key="property.title + loc.title" :data="loc" />
 	</div>
 </div>
 </template>

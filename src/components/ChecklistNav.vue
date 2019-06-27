@@ -7,7 +7,7 @@
 	</div>
 	
 	<div class="properties">
-		<ChecklistNavItem v-for="property in this.$store.state.properties" icon="" :title="property.title" />
+		<ChecklistNavItem v-for="property in this.$store.state.properties" :key="`nav${property.title}`" icon="" :title="property.title" />
 	</div>
 	
 	<div class="settings">

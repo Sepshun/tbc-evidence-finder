@@ -3,7 +3,6 @@
 	class="location"
 	:style="tileBackground"
 >
-	<div class="overlay"></div>
 	<p class="title">{{ data.title }}</p>
 	
 	<!-- <div class="info">
@@ -90,15 +89,6 @@ export default {
 		margin: 0;
 		opacity: 1;
 		transition: 0.15s ease 0.5s;
-	}
-	
-	> .overlay {
-		// background: hsla(0,0%,10%,0.4);
-		width: 100%;
-		height: 100%;
-		pointer-events: none;
-		
-		opacity: 0;
 	}
 	
 	> .info {

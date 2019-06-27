@@ -32,13 +32,13 @@ export default new Vuex.Store({
 						title: 'Downstairs',
 						image: 'https://steamuserimages-a.akamaihd.net/ugc/992387199682149284/04988B93711D4D4D358ADF375DA4FFD42E9CDB16/'
 					}, {
-						title: 'Street Bench',
+						title: 'Street Bench 1',
 						image: 'https://steamuserimages-a.akamaihd.net/ugc/947349514287533529/116865ACC408EEB0B4389AF41E099235E9F1A650/'
 					}, {
-						title: 'Street Bench',
+						title: 'Street Bench 2',
 						image: 'https://steamuserimages-a.akamaihd.net/ugc/947349514287533529/116865ACC408EEB0B4389AF41E099235E9F1A650/'
 					}, {
-						title: 'Street Bench',
+						title: 'Street Bench 3',
 						image: 'https://steamuserimages-a.akamaihd.net/ugc/947349514287533529/116865ACC408EEB0B4389AF41E099235E9F1A650/'
 					}
                 ]
@@ -97,7 +97,7 @@ export default new Vuex.Store({
                 locations: []
             },
             { // The Barracks
-                title: '920 Observation',
+                title: 'The Barracks',
                 locations: []
             },
             { // Signal Relay
