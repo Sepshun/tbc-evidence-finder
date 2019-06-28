@@ -1,13 +1,16 @@
 <template>
 <div id="checklist" class="view">
-	<ChecklistNav />
-    <div class="property-list">
-        <ChecklistProperty
-			v-for="(property, i) in properties"
-			:key="property.title"
-			:property="property"
-		/>
-    </div>
+	<template v-if="$store.state.evidenceData !== {}">
+		<ChecklistNav />
+		<div class="property-list">
+			<ChecklistProperty
+				v-for="(property, i) in properties"
+				:key="property.title"
+				v-if="property.state === $store.state.currentFilter"
+				v-model="properties[i]"
+			/>
+		</div>
+	</template>
 </div>
 </template>
 
@@ -18,9 +21,11 @@ import ChecklistProperty from '@/components/ChecklistProperty.vue'
 
 export default {
     components: { ChecklistNav, ChecklistProperty },
-	computed: { ...mapGetters(['properties']) },
+	computed: {
+		...mapGetters(['properties'])
+	},
 	created() {
-		this.$store.dispatch('fetchProperties', this.$db.collection('properties-surface'))
+		this.$store.dispatch('fetchProperties', this.$db.collection('checklist-data').doc('sections'))
 	}
 }
 </script>

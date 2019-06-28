@@ -1,18 +1,17 @@
 <template>
-<div
-	class="location"
-	:style="tileBackground"
->
+<div class="location">
+	<div class="img" :style="tileBackground"></div>
 	<p class="title">{{ data.title }}</p>
 	
-	<!-- <div class="info">
+	<div class="info">
+		<p class="count"># Items</p>
 		<p class="title">{{ data.title }}</p>
 		<p
 			class="item"
 			v-for="(item, i) in data.items"
 			@click="imageState = i"
 		>{{ i+1 }}) {{ item.title }}</p>
-	</div> -->
+	</div>
 </div>
 </template>
 
@@ -51,13 +50,9 @@ export default {
 	computed: {
 		tileBackground() {
 			if (this.imageState === '0') {
-				return {
-					backgroundImage: `url(${this.data.image})`
-				}
+				return { backgroundImage: `url(${this.data.img})` }
 			} else {
-				return {
-					backgroundImage: `url(${this.data.items[this.imageState].image})`
-				}
+				return { backgroundImage: `url(${this.data.items[this.imageState].img})` }
 			}
 		}
 	}
@@ -66,16 +61,22 @@ export default {
 
 <style lang="scss">
 .location {
-	width: 256px;
-	height: 256px;
-	background: white;
-	background-size: cover;
-	background-position: center;
 	position: relative;
-	
-	float: left;
+	min-width: 256px;
+	min-height: 256px;
 	margin: 8px;
+	float: left;
 	
+	> .img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 256px;
+		height: 256px;
+		background-size: cover;
+		background-position: center;
+		transition: 0.15s ease;
+	}
 	> .title {
 		color: white;
 		position: absolute;
@@ -87,17 +88,16 @@ export default {
 		width: 256px;
 		text-align: center;
 		margin: 0;
+		
 		opacity: 1;
-		transition: 0.15s ease 0.5s;
+		transition: 0.15s ease;
 	}
-	
 	> .info {
 		position: absolute;
-		top: 0;
-		left: 256px;
+		top: 224px;
+		left: 0px;
 		background: hsla(0,0%,10%,0.95);
-		height: 100%;
-		width: 512px;
+		width: 256px;
 		box-sizing: border-box;
 		padding: 16px;
 		z-index: 9999;
@@ -106,6 +106,12 @@ export default {
 		opacity: 0;
 		pointer-events: none;
 		transition: 0.15s ease;
+		
+		> .count {
+			color: white;
+			margin: 0 0 8px 0;
+			opacity: 0.5;
+		}
 		
 		> .title {
 			color: white;
@@ -120,12 +126,25 @@ export default {
 	}
 	
 	&:hover {
-		> .title { opacity: 0; pointer-events: none; }
-		> .overlay, > .info { opacity: 1; }
+		z-index: 9999;
+		
+		> .img {
+			width: 512px;
+			left: -128px;
+			top: -32px;
+			box-shadow: 4px 8px 32px rgba(0,0,0,0.5);
+		}
+		> .title {
+			opacity: 0;
+			pointer-events: none;
+		}
 		> .info {
+			opacity: 1;
+			width: 512px;
+			left: -128px;
 			visibility: visible;
-			transition: 0.15s ease 0.5s;
 			pointer-events: auto;
+			box-shadow: 4px 8px 32px rgba(0,0,0,0.5);
 		}
 	}
 }

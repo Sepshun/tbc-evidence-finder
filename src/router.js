@@ -26,6 +26,11 @@ export default new Router({
             path: '/about',
             name: 'about',
             component: () => import('./views/About.vue')
+        },
+        {
+            path: '/yeet',
+            name: 'admin',
+            component: () => import('./views/Admin.vue')
         }
     ]
 })

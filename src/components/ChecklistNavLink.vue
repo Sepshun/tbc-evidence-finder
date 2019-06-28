@@ -1,5 +1,5 @@
 <template>
-    <a :href="href" class="item scrollactive-item">
+    <a :href="href" class="item scrollactive-item" :class="[`state-${state}`]">
         <img class="icon" src="" alt="">
         <p class="title" :class="{'span-2': !num}">{{ title }}</p>
         <p v-if="num" class="num">{{ num }}</p>
@@ -24,7 +24,11 @@ export default {
         href: {
             type: String,
             default: ''
-        }
+        },
+		state: {
+			type: Number,
+			default: null
+		}
     }
 }
 </script>
@@ -41,6 +45,7 @@ export default {
     align-items: center;
     cursor: pointer;
     text-decoration: none;
+    color: white;
     
     > .icon {
         background: white;
@@ -50,7 +55,6 @@ export default {
     
     > .title, > .num {
         margin: 0;
-        color: white;
         font-size: 16px;
     }
     > .title { margin-left: 8px; }
@@ -60,5 +64,8 @@ export default {
     
     &:hover, &.active { opacity: 1; }
     &.active { background: linear-gradient(90deg, rgba(white, 0.2), rgba(0,0,0,0)); }
+	
+	&.state-1 { color: green; }
+	&.state-2 { color: red; }
 }
 </style>

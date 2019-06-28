@@ -6,19 +6,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        propertiesSurface: [],
-        propertiesMaze: [],
-        currentFilter: 'not-checked'
+        evidenceData: {
+            'Surface': [],
+            'The Maze': []
+        },
+        currentFilter: undefined
     },
     getters: {
         sections: state => {
-            return {
-                surface: state.propertiesSurface,
-                maze: state.propertiesMaze
-            }
+            return state.evidenceData
         },
         properties: state => {
-            return state.propertiesSurface.concat(state.propertiesMaze)
+            return state.evidenceData['Surface'].concat(state.evidenceData['The Maze'])
         }
     },
     mutations: {
@@ -26,7 +25,7 @@ export default new Vuex.Store({
     },
     actions: {
         fetchProperties: firestoreAction(({bindFirestoreRef}, ref) => {
-            bindFirestoreRef("propertiesSurface", ref)
+            bindFirestoreRef("evidenceData", ref)
         })
     }
 })

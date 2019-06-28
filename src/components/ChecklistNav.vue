@@ -2,22 +2,25 @@
 <div id="checklist-nav">
 	<div class="filters">
 		<ChecklistNavItem
+			:class="{'active': $store.state.currentFilter === undefined}"
 			icon=""
 			title="Not Checked"
 			:num="2"
-			@click.native=""
+			@click.native="$store.state.currentFilter = undefined"
 		/>
 		<ChecklistNavItem
+			:class="{'active': $store.state.currentFilter === 1}"
 			icon=""
 			title="Completed"
 			:num="2"
-			@click.native=""
+			@click.native="$store.state.currentFilter = 1"
 		/>
 		<ChecklistNavItem
+			:class="{'active': $store.state.currentFilter === 2}"
 			icon=""
 			title="No Evidence"
 			:num="2"
-			@click.native=""
+			@click.native="$store.state.currentFilter = 2"
 		/>
 	</div>
 	
@@ -37,6 +40,7 @@
 				icon=""
 				:title="property.title"
 				:href="`#prop-${property.title.replace(/\s+/g, '-').toLowerCase()}`"
+				:state="property.state"
 			/>
 		</div>
 	</scrollactive>

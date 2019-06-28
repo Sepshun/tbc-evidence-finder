@@ -1,12 +1,18 @@
 <template>
-<div :id="`prop-${property.title.replace(/\s+/g, '-').toLowerCase()}`" class="property">
+<div :id="`prop-${value.title.replace(/\s+/g, '-').toLowerCase()}`" class="property">
 	<div class="header">
+		<div class="actions">
+			<div class="btn" @click="setState(1)"><i class="material-icons">check</i></div>
+			<div class="btn" @click="setState(2)"><i class="material-icons">close</i></div>
+		</div>
+		
 		<img src="" alt="" class="icon">
-		<p class="title">{{ property.title }}</p>
-		<p class="num">{{ property.locations.length }} Locations</p>
+		
+		<p class="title">{{ value.title }}</p>
+		<p class="num">{{ value.locations.length }} Locations</p>
 	</div>
 	<div class="location-list">
-		<ChecklistLocation v-for="loc in property.locations" :key="property.title + loc.title" :data="loc" />
+		<ChecklistLocation v-for="loc in value.locations" :key="value.title + loc.title" :data="loc" />
 	</div>
 </div>
 </template>
@@ -16,7 +22,13 @@ import ChecklistLocation from '@/components/ChecklistLocation.vue'
 
 export default {
 	components: { ChecklistLocation },
-    props: ['property']
+    props: ['value'],
+	methods: {
+		setState(state) {
+			this.$set(this.value, 'state', state)
+			this.$emit('input', this.value)
+		}
+	}
 }
 </script>
 
@@ -31,11 +43,33 @@ export default {
 		background: $gradient;
 		height: 48px;
 		display: grid;
-		grid-template-columns: 32px auto auto;
+		grid-template-columns: 80px 32px auto auto;
 		grid-gap: 8px;
 		box-sizing: border-box;
 		padding: 8px 16px;
 		align-items: center;
+		
+		> .actions {
+			display: grid;
+			grid-template-columns: 32px 32px;
+			grid-gap: 8px;
+			
+			> .btn {
+				color: white;
+				border-radius: 32px;
+				padding: 4px;
+				opacity: 0.5;
+				transition: 0.1s ease;
+				cursor: pointer;
+				
+				> i { display: block; }
+				
+				&:hover {
+					opacity: 1;
+					background: hsla(0,0%,100%,0.2);
+				}
+			}
+		}
 		
 		> .icon {
 			width: 32px;
