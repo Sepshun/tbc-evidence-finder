@@ -3,7 +3,7 @@
 	<ChecklistNav />
     <div class="property-list">
         <ChecklistProperty
-			v-for="(property, i) in this.$store.state.properties"
+			v-for="(property, i) in properties"
 			:key="property.title"
 			:property="property"
 		/>
@@ -12,11 +12,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import ChecklistNav from '@/components/ChecklistNav.vue'
 import ChecklistProperty from '@/components/ChecklistProperty.vue'
 
 export default {
-    components: { ChecklistNav, ChecklistProperty }
+    components: { ChecklistNav, ChecklistProperty },
+	computed: { ...mapGetters(['properties']) },
+	created() {
+		this.$store.dispatch('fetchProperties', this.$db.collection('properties-surface'))
+	}
 }
 </script>
 

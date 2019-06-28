@@ -1,25 +1,44 @@
 <template>
 <div id="checklist-nav">
 	<div class="filters">
-		<ChecklistNavItem icon="" title="Not Checked" class="active" :num="9" />
-		<ChecklistNavItem icon="" title="Completed" :num="4" />
-		<ChecklistNavItem icon="" title="No Evidence" :num="2" />
+		<ChecklistNavItem
+			icon=""
+			title="Not Checked"
+			:num="2"
+			@click.native=""
+		/>
+		<ChecklistNavItem
+			icon=""
+			title="Completed"
+			:num="2"
+			@click.native=""
+		/>
+		<ChecklistNavItem
+			icon=""
+			title="No Evidence"
+			:num="2"
+			@click.native=""
+		/>
 	</div>
 	
 	<scrollactive
 		class="properties"
 		active-class="active"
-		:offset="256"
+		:offset="128"
 		:scrollOffset="16"
 		:scrollContainerSelector="'.property-list'"
 		:modifyUrl="false"
 	>
-		<ChecklistNavItem
-			v-for="(property, i) in this.$store.state.properties"
-			:key="`nav${property.title}`"
-			icon=""
-			:title="property.title"
-		/>
+		<div class="section" v-for="(properties, name) in sections">
+			<p class="title">{{ name }}</p>
+			<ChecklistNavLink
+				v-for="(property, i) in properties"
+				:key="`nav${property.title}`"
+				icon=""
+				:title="property.title"
+				:href="`#prop-${property.title.replace(/\s+/g, '-').toLowerCase()}`"
+			/>
+		</div>
 	</scrollactive>
 	
 	<div class="settings">
@@ -29,15 +48,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import ChecklistNavItem from '@/components/ChecklistNavItem.vue'
+import ChecklistNavLink from '@/components/ChecklistNavLink.vue'
 
 export default {
-    components: { ChecklistNavItem },
-	data() {
-		return {
-			
-		}
-	}
+    components: { ChecklistNavItem, ChecklistNavLink },
+	computed: { ...mapGetters(['sections']) }
 }
 </script>
 
@@ -55,6 +72,16 @@ export default {
 	> .properties {
 		height: 100%;
 		overflow: auto;
+		
+		> .section {
+			margin-bottom: 16px;
+			> .title {
+				color: white;
+				text-transform: capitalize;
+				margin: 0 0 8px 0;
+				padding: 0 16px;
+			}
+		}
 	}
 }
 </style>
