@@ -5,21 +5,21 @@
 			:class="{'active': $store.state.currentFilter === undefined}"
 			icon=""
 			title="Not Checked"
-			:num="2"
+			:num="getFilterAmount(undefined)"
 			@click.native="$store.state.currentFilter = undefined"
 		/>
 		<ChecklistNavItem
 			:class="{'active': $store.state.currentFilter === 1}"
 			icon=""
 			title="Completed"
-			:num="2"
+			:num="getFilterAmount(1)"
 			@click.native="$store.state.currentFilter = 1"
 		/>
 		<ChecklistNavItem
 			:class="{'active': $store.state.currentFilter === 2}"
 			icon=""
 			title="No Evidence"
-			:num="2"
+			:num="getFilterAmount(2)"
 			@click.native="$store.state.currentFilter = 2"
 		/>
 	</div>
@@ -58,7 +58,13 @@ import ChecklistNavLink from '@/components/ChecklistNavLink.vue'
 
 export default {
     components: { ChecklistNavItem, ChecklistNavLink },
-	computed: { ...mapGetters(['sections']) }
+	computed: { ...mapGetters(['sections', 'properties']) },
+	methods: {
+		getFilterAmount(filter) {
+			let filtered = this.properties.filter(data => data.state === filter)
+			return filtered.length
+		}
+	}
 }
 </script>
 

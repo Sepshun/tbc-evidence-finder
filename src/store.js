@@ -6,10 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        evidenceData: {
-            'Surface': [],
-            'The Maze': []
-        },
+        evidenceData: {},
         currentFilter: undefined
     },
     getters: {
@@ -17,7 +14,9 @@ export default new Vuex.Store({
             return state.evidenceData
         },
         properties: state => {
-            return state.evidenceData['Surface'].concat(state.evidenceData['The Maze'])
+            if (state.evidenceData['Surface'] && state.evidenceData['The Maze']) {
+                return state.evidenceData['Surface'].concat(state.evidenceData['The Maze'])
+            } else return []
         }
     },
     mutations: {

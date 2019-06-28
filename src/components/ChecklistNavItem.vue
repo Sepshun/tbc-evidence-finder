@@ -1,8 +1,8 @@
 <template>
     <div class="item">
         <img class="icon" src="" alt="">
-        <p class="title" :class="{'span-2': !num}">{{ title }}</p>
-        <p v-if="num" class="num">{{ num }}</p>
+        <p class="title">{{ title }}</p>
+        <p class="num">{{ num }}</p>
     </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
         },
         num: {
             type: Number,
-            default: null
+            default: 0
         }
     }
 }
