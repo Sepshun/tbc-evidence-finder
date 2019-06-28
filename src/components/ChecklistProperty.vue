@@ -1,5 +1,5 @@
 <template>
-<div :id="`prop-${value.title.replace(/\s+/g, '-').toLowerCase()}`" class="property">
+<div :id="`prop-${value.title.replace(/\s+/g, '-').toLowerCase()}`" class="property" :class="[`-state-${value.state}`]">
 	<div class="header">
 		<div class="actions">
 			<div class="btn" @click="setState(1)"><i class="material-icons">check</i></div>
@@ -40,7 +40,7 @@ export default {
 	&:not(:last-of-type) { margin-bottom: 16px; }
 	
 	> .header {
-		background: $gradient;
+		background: rgba($blue, 0.5);
 		height: 48px;
 		display: grid;
 		grid-template-columns: 80px 32px auto auto;
@@ -87,6 +87,8 @@ export default {
 			opacity: 0.5;
 		}
 	}
+	&.-state-1 > .header { background: rgba($green, 0.5); }
+	&.-state-2 > .header { background: rgba($red, 0.5); }
 	
 	> .location-list {
 		box-sizing: border-box;

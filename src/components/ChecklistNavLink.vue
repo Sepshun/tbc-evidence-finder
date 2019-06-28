@@ -65,7 +65,7 @@ export default {
     &:hover, &.active { opacity: 1; }
     &.active { background: linear-gradient(90deg, rgba(white, 0.2), rgba(0,0,0,0)); }
 	
-	&.state-1 { color: green; }
-	&.state-2 { color: red; }
+	&.state-1 { color: $green; }
+	&.state-2 { color: $red; }
 }
 </style>
