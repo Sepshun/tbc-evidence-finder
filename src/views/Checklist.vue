@@ -6,7 +6,7 @@
 			<ChecklistProperty
 				v-for="(property, i) in properties"
 				:key="property.title"
-				v-if="property.state === $store.state.currentFilter"
+				v-if="property.state === $store.state.currentFilter || $store.state.currentFilter === 0"
 				v-model="properties[i]"
 			/>
 		</div>

@@ -1,5 +1,5 @@
 <template>
-<div class="location">
+<div class="location" :class="[`anchor-${anchor}`]">
 	<div class="img" :style="tileBackground"></div>
 	<p class="title">{{ data.title }}</p>
 	
@@ -44,17 +44,32 @@ export default {
 	},
 	data() {
 		return {
-			imageState: '0'
+			imageState: '0',
+			anchor: 'center'
+		}
+	},
+	methods: {
+		anchorLocation(e) {
+			console.log('calculating...')
+			let el = this.$el
+			let parent = el.parentNode
+			if (el.offsetLeft - parent.offsetLeft == 16) this.anchor = 'left'
+			else if (document.body.offsetWidth - (el.offsetLeft + el.clientWidth) <= 146) this.anchor = 'right'
+			else this.anchor = 'center'
 		}
 	},
 	computed: {
 		tileBackground() {
-			if (this.imageState === '0') {
-				return { backgroundImage: `url(${this.data.img})` }
-			} else {
-				return { backgroundImage: `url(${this.data.items[this.imageState].img})` }
-			}
+			if (this.imageState === '0') return { backgroundImage: `url(${this.data.img})` }
+			else return { backgroundImage: `url(${this.data.items[this.imageState].img})` }
 		}
+	},
+	mounted() {
+		this.$nextTick(() => { window.addEventListener('resize', this.anchorLocation) })
+		this.anchorLocation()
+	},
+	beforeDestroy() {
+		window.removeEventListener('resize', this.anchorLocation)
 	}
 }
 </script>
@@ -94,7 +109,7 @@ export default {
 	}
 	> .info {
 		position: absolute;
-		top: 224px;
+		top: 232px;
 		left: 0px;
 		background: hsla(0,0%,10%,0.95);
 		width: 256px;
@@ -131,7 +146,7 @@ export default {
 		> .img {
 			width: 512px;
 			left: -128px;
-			top: -32px;
+			top: -24px;
 			box-shadow: 4px 8px 32px rgba(0,0,0,0.5);
 		}
 		> .title {
@@ -145,6 +160,21 @@ export default {
 			visibility: visible;
 			pointer-events: auto;
 			box-shadow: 4px 8px 32px rgba(0,0,0,0.5);
+		}
+	}
+	
+	&.anchor-left {
+		&:hover {
+			> .img { left: -16px; }
+			> .info { left: -16px; }
+		}
+	}
+	&.anchor-right {
+		> .img { left: auto; right: 0; }
+		> .info { left: auto; right: 0; }
+		&:hover {
+			> .img { right: -16px; }
+			> .info { right: -16px; }
 		}
 	}
 }
