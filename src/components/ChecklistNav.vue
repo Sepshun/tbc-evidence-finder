@@ -53,6 +53,9 @@
 	
 	<div class="settings">
 		<ChecklistNavItem icon="" title="Settings" />
+		<div class="panel">
+			
+		</div>
 	</div>
 </div>
 </template>

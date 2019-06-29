@@ -11,7 +11,7 @@
 		<p class="title">{{ value.title }}</p>
 		<p class="num">{{ value.locations.length }} Locations</p>
 	</div>
-	<div class="location-list">
+	<div class="location-list" :class="{'-collapse': $store.state.settings.collapseHeaders}">
 		<ChecklistLocation v-for="loc in value.locations" :key="value.title + loc.title" :data="loc" />
 	</div>
 </div>
@@ -36,7 +36,6 @@ export default {
 .property {
 	background: $background-dark;
 	width: calc(100% + 4px);
-	min-height: 320px;
 	&:not(:last-of-type) { margin-bottom: 16px; }
 	
 	> .header {
@@ -94,6 +93,10 @@ export default {
 		box-sizing: border-box;
 		padding: 8px;
 		@include clearfix();
+		
+		&.-collapse {
+			display: none;
+		}
 	}
 }
 </style>
