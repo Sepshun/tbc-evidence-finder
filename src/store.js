@@ -6,8 +6,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        initData: {
+            property: {},
+            location: {}
+        },
         evidenceData: {},
-        currentFilter: undefined
+        currentFilter: undefined,
+        settings: {
+            collapseHeaders: false
+        }
     },
     getters: {
         sections: state => {

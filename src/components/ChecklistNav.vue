@@ -22,6 +22,12 @@
 			:num="getFilterAmount(2)"
 			@click.native="$store.state.currentFilter = 2"
 		/>
+		<ChecklistNavItem
+			:class="{'active': $store.state.currentFilter === 0}"
+			icon=""
+			title="All Properties"
+			@click.native="$store.state.currentFilter = 0"
+		/>
 	</div>
 	
 	<scrollactive
@@ -71,7 +77,7 @@ export default {
 <style lang="scss">
 #checklist-nav {
 	display: grid;
-	grid-template-rows: 126px auto 42px;
+	grid-template-rows: 168px auto 42px;
 	grid-gap: 16px;
 	height: calc(100vh - 64px);
 	width: 100%;
