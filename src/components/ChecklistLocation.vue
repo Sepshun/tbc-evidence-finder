@@ -2,15 +2,22 @@
 <div class="location" :class="[`anchor-${anchor}`]">
 	<div class="img" :style="tileBackground"></div>
 	<p class="title">{{ data.title }}</p>
+	<div class="arrows" v-if="data.items.length > 1">
+		<i class="material-icons -left" @click="changeSelected(0)">chevron_left</i>
+		<i class="material-icons -right" @click="changeSelected(1)">chevron_right</i>
+	</div>
 	
 	<div class="info">
-		<p class="count"># Items</p>
 		<p class="title">{{ data.title }}</p>
+		<p class="count type-subtitle">{{ data.items.length }} Item<template v-if="data.items.length > 1">s</template></p>
 		<p
 			class="item"
 			v-for="(item, i) in data.items"
-			@click="imageState = i"
+			:class="{'-active': selectedItem === i}"
+			@click="selectedItem = i"
 		>{{ i+1 }}) {{ item.title }}</p>
+		<p class="description-title type-subtitle">Description</p>
+		<p class="description">{{ data.items[selectedItem].desc }}</p>
 	</div>
 </div>
 </template>
@@ -44,7 +51,7 @@ export default {
 	},
 	data() {
 		return {
-			imageState: '0',
+			selectedItem: 0,
 			anchor: 'center'
 		}
 	},
@@ -56,12 +63,24 @@ export default {
 			if (el.offsetLeft - parent.offsetLeft == 16) this.anchor = 'left'
 			else if (document.body.offsetWidth - (el.offsetLeft + el.clientWidth) <= 146) this.anchor = 'right'
 			else this.anchor = 'center'
+		},
+		changeSelected(dir) {
+			// LEFT
+			if (dir == 0) {
+				if (this.selectedItem <= 0) this.selectedItem = this.data.items.length - 1
+				else this.selectedItem = this.selectedItem - 1
+			}
+			// RIGHT
+			if (dir == 1) {
+				if (this.selectedItem === this.data.items.length - 1) this.selectedItem = 0
+				else this.selectedItem = this.selectedItem + 1
+			}
 		}
 	},
 	computed: {
 		tileBackground() {
-			if (this.imageState === '0') return { backgroundImage: `url(${this.data.img})` }
-			else return { backgroundImage: `url(${this.data.items[this.imageState].img})` }
+			if (this.selectedItem === '0') return { backgroundImage: `url(${this.data.img})` }
+			else return { backgroundImage: `url(${this.data.items[this.selectedItem].img})` }
 		}
 	},
 	mounted() {
@@ -107,6 +126,31 @@ export default {
 		opacity: 1;
 		transition: 0.15s ease;
 	}
+	> .arrows {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 256px;
+		height: 100%;
+		opacity: 0;
+		transition: 0.15s ease;
+		user-select: none;
+		
+		> i {
+			color: white;
+			position: absolute;
+			top: 50%;
+			transform: translate(0,-50%);
+			cursor: pointer;
+			border-radius: 50%;
+			padding: 8px;
+			&:hover { background: rgba(white, 0.15); }
+			transition: 0.1s ease;
+		}
+		> i.-left { left: 16px; }
+		> i.-right { right: 16px; }
+		
+	}
 	> .info {
 		position: absolute;
 		top: 232px;
@@ -122,22 +166,30 @@ export default {
 		pointer-events: none;
 		transition: 0.15s ease;
 		
-		> .count {
-			color: white;
-			margin: 0 0 8px 0;
-			opacity: 0.5;
-		}
-		
 		> .title {
 			color: white;
 			font-size: 24px;
-			margin: 0 0 16px 0;
+			margin: 0;
 		}
 		
-		> .item {
+		> .type-subtitle {
+			color: rgba(white, 0.8);
+			margin: 16px 0 0 0;
+			font-weight: 500;
+		}
+		
+		> .description {
 			color: white;
 			margin: 0;
 		}
+		
+		> .item {
+			color: rgba(white, 0.8);
+			margin: 0;
+			cursor: pointer;
+			&:hover { color: white; }
+		}
+		> .item.-active { color: lighten($blue, 10%); }
 	}
 	
 	&:hover {
@@ -153,6 +205,13 @@ export default {
 			opacity: 0;
 			pointer-events: none;
 		}
+		> .arrows {
+			top: -24px;
+			left: -128px;
+			width: 512px;
+			opacity: 1;
+			transition: 0.15s ease 0.15s;
+		}
 		> .info {
 			opacity: 1;
 			width: 512px;
@@ -167,6 +226,7 @@ export default {
 		&:hover {
 			> .img { left: -16px; }
 			> .info { left: -16px; }
+			> .arrows { left: -16px; }
 		}
 	}
 	&.anchor-right {
@@ -175,6 +235,7 @@ export default {
 		&:hover {
 			> .img { right: -16px; }
 			> .info { right: -16px; }
+			> .arrows { right: -16px; }
 		}
 	}
 }
