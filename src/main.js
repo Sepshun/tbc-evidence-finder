@@ -42,11 +42,11 @@ Vue.use(VueScrollactive)
 // ----------------------------------------
 // SECURE ROUTES --------------------------
 router.beforeEach((to, from, next) => {
-    const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
-    const currentUser  = firebase.auth().currentUser
-    if (requiresAuth && !currentUser)     { next('/') }
-    else if (requiresAuth && currentUser) { next() }
-    else                                  { next() }
+    let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+    let currentUser  = firebase.auth().currentUser
+    if (requiresAuth && !currentUser) next('/')
+    else if (requiresAuth && currentUser) next()
+    else next()
 });
 
 

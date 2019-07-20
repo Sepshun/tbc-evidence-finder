@@ -126,7 +126,6 @@ export default {
 			background: rgba($blue, 1);
 			opacity: 1;
 		}
-		
 		> .panel {
 			position: absolute;
 			bottom: 42px;

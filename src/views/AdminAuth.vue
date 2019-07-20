@@ -29,6 +29,11 @@ export default {
 					console.log(err.code, err.message)
 				})
 		}
+	},
+	mounted() {
+		this.$auth.onAuthStateChanged(user => {
+			if (user) this.$router.replace('/admin')
+		})
 	}
 }
 </script>
