@@ -28,9 +28,14 @@ export default new Router({
             component: () => import('./views/About.vue')
         },
         {
-            path: '/yeet',
-            name: 'admin',
-            component: () => import('./views/Admin.vue')
-        }
+            path: '/auth',
+            name: 'auth',
+            component: () => import('./views/AdminAuth.vue')
+        },
+		{
+			path: '/admin',
+			name: 'admin',
+			component: () => import('./views/AdminPanel.vue')
+		}
     ]
 })
