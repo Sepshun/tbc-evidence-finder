@@ -4,7 +4,7 @@
 		<p class="title">Authentication</p>
 		<input type="text" placeholder="Email Address" v-model="email">
 		<input type="password" placeholder="Password" v-model="password">
-		<button>Login</button>
+		<button @click="signin">{{ loggingIn ? '...' : 'Login' }}</button>
 	</div>
 </div>
 </template>
@@ -14,7 +14,20 @@ export default {
 	data() {
 		return {
 			email: '',
-			password: ''
+			password: '',
+			loggingIn: false
+		}
+	},
+	methods: {
+		signin() {
+			this.loggingIn = true
+			this.$auth
+				.signInWithEmailAndPassword(this.email, this.password)
+				.then(() => { this.$router.replace('/admin') })
+				.catch(err => {
+					this.loggingIn = false
+					console.log(err.code, err.message)
+				})
 		}
 	}
 }

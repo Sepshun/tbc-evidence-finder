@@ -35,7 +35,8 @@ export default new Router({
 		{
 			path: '/admin',
 			name: 'admin',
-			component: () => import('./views/AdminPanel.vue')
+			component: () => import('./views/AdminPanel.vue'),
+            meta: { requiresAuth: true }
 		}
     ]
 })
